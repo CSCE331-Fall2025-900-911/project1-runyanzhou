@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Run Zhou</title>
+    <!-- <link rel="stylesheet" href="./styles.css"> -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Famous Bugs — Random Specimen</title>
+<style>
+  :root{
+    --accent:#f59e0b; --bg:#f9fafb; --card:#fff; --text:#111827; --muted:#6b7280;
+    --radius:14px; --maxw:960px;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  }
+  body{background:var(--bg);margin:0;padding:32px 16px;display:flex;justify-content:center;line-height:1.5;}
+  .wrap{max-width:var(--maxw);width:100%;}
+  h1{margin:0;font-size:1.8rem;}
+  p.lead{color:var(--muted);margin:4px 0 18px;}
+  .card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 18px rgba(0,0,0,0.07);padding:20px;margin-bottom:18px;}
+  .two{display:grid;grid-template-columns:1fr 360px;gap:18px;}
+  @media(max-width:900px){.two{grid-template-columns:1fr;}}
+  .facts ul{margin:8px 0;padding-left:1.15rem;color:var(--muted);}
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .gallery img{width:100%;height:200px;object-fit:cover;border-radius:8px;}
+  .caption{font-size:0.85rem;color:var(--muted);}
+  button{
+    background:var(--accent);color:#fff;font-weight:600;
+    border:none;border-radius:10px;padding:10px 14px;margin-top:12px;cursor:pointer;
+  }
+  button:hover{opacity:0.9;}
+</style>
+</head>
+<body>
+    
+<div class="wrap">
+    <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="portfolio.html">Technical Portfolio</a></li>
+                    <li><a href="qualifications.html">Qualifications</a></li>
+                    <li><a href="service.html">Service</a></li>
+                    <li><a href="genai.html">AI Generated</a></li>
+                </ul>
+            </nav>
+            <h1>Run Zhou</h1>
+            <p>Computer Science '26 | Texas A&M University</p>
+        </header>
+  
+    <h2 id="specimen-title">Loading...</h2>
+
+  <section class="card two">
+    <div>
+      <h3>About</h3>
+      <p id="specimen-description"></p>
+      <div class="card facts">
+        <h4>Quick Facts</h4>
+        <ul id="facts"></ul>
+      </div>
+      <button id="shuffle">🔄 New Bug</button>
+    </div>
+    <aside class="card">
+      <h3>Gallery</h3>
+      <div class="gallery" id="gallery"></div>
+      <p class="caption" id="image-note"></p>
+    </aside>
+  </section>
+</div>
+
+<script>
+const specimens = [
+  {
+    title: "Odonata — Dragonflies & Damselflies",
+    description: "Dragonflies and damselflies are agile fliers with large multifaceted eyes, two pairs of strong transparent wings, and elongated bodies. They are predators both in their aquatic larval stage and as adults.",
+    facts: [
+      "Order: Odonata",
+      "Over 5,000 species worldwide",
+      "Excellent fliers; can hover, glide, and even fly backward",
+      "Larvae are aquatic and predatory"
+    ],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Aeshna_juncea_hovering.jpg/500px-Aeshna_juncea_hovering.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Common_blue_damselfly02.jpg/500px-Common_blue_damselfly02.jpg"
+    ],
+    note: "Images: Wikimedia Commons (CC BY / CC0)."
+  },
+  {
+    title: "Orthoptera — Grasshoppers, Crickets & Katydids",
+    description: "Orthopterans are characterized by their powerful hind legs adapted for jumping, and many species produce sound (stridulation) by rubbing their wings or legs together. They are primarily herbivorous.",
+    facts: [
+      "Order: Orthoptera",
+      "Over 20,000 species worldwide",
+      "Hind legs adapted for jumping",
+      "Many produce sound by stridulation"
+    ],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Roesel%27s_bush-cricket_%28Metrioptera_roeselii_diluta%29_male.jpg/500px-Roesel%27s_bush-cricket_%28Metrioptera_roeselii_diluta%29_male.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Garden_locust_%28Acanthacris_ruficornis%29.jpg/500px-Garden_locust_%28Acanthacris_ruficornis%29.jpg"
+    ],
+    note: "Images: Wikimedia Commons (CC BY / CC0)."
+  },
+  {
+    title: "Hemiptera — True Bugs",
+    description: "True bugs are a diverse group of insects characterized by their piercing-sucking mouthparts. They include species such as stink bugs, assassin bugs, and water striders.",
+    facts: [
+      "Order: Hemiptera",
+      "Over 80,000 species worldwide",
+      "Piercing-sucking mouthparts",
+      "Includes stink bugs, assassin bugs, and water striders"
+    ],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Hemiptera_suborders.jpg/600px-Hemiptera_suborders.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Heteroptera_morphology-d.svg/500px-Heteroptera_morphology-d.svg.png"
+    ],
+    note: "Images: Wikimedia Commons (CC BY / CC0)."
+  },
+  {
+    title: "Coleoptera — Beetles",
+    description: "Beetles are the largest order of insects, characterized by their hardened forewings (elytra) that cover and protect the hind wings and abdomen. They occupy a wide range of habitats and have diverse diets.",
+    facts: [
+      "Order: Coleoptera",
+      "Over 400,000 species worldwide",
+      "Hardened forewings (elytra)",
+      "Diverse diets and habitats"
+    ],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Coleoptera_collage.png/500px-Coleoptera_collage.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Titanus_giganteus_MHNT_dos.jpg/500px-Titanus_giganteus_MHNT_dos.jpg"
+    ],
+    note: "Images: Wikimedia Commons (CC BY / CC0)."
+  },
+  {
+    title: "Diptera — Flies, Mosquitoes & Midges",
+    description: "Dipterans are characterized by having a single pair of wings and halteres (modified hindwings) that aid in balance during flight. They include species such as houseflies, mosquitoes, and fruit flies.",
+    facts: [
+      "Order: Diptera",
+      "Over 150,000 species worldwide",
+      "Single pair of wings and halteres",
+      "Includes houseflies, mosquitoes, and fruit flies"
+    ],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Six_Diptera.jpg/960px-Six_Diptera.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Anthomyiidae_%28female%29_%2810144905255%29.jpg/960px-Anthomyiidae_%28female%29_%2810144905255%29.jpg"
+    ],
+    note: "Images: Wikimedia Commons (CC BY / CC0)."
+  },
+  {
+    title: "Lepidoptera — Butterflies & Moths",
+    description: "Lepidopterans are known for their scaled wings and undergo complete metamorphosis from larva (caterpillar) to adult. They play important roles in pollination and as indicators of environmental health.",
+    facts: [
+      "Order: Lepidoptera",
+      "Over 180,000 species worldwide",
+      "Scaled wings",
+      "Undergo complete metamorphosis"
+    ],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/3/3d/Fesoj_-_Papilio_machaon_%28by%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Attacus_atlas_%2815050883139%29.jpg/500px-Attacus_atlas_%2815050883139%29.jpg"
+    ],
+    note: "Images: Wikimedia Commons (CC BY / CC0)."
+  },
+  {
+    title: "Hymenoptera — Ants, Bees & Wasps",
+    description: "Hymenopterans are a diverse group of insects that include ants, bees, and wasps. Many species exhibit complex social behaviors and live in colonies with a division of labor.",
+    facts: [
+      "Order: Hymenoptera",
+      "Over 150,000 species worldwide",
+      "Includes ants, bees, and wasps",
+      "Many exhibit complex social behaviors"
+    ],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/f/f5/Hymenoptera.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Apis_mellifera_Western_honey_bee.jpg/1442px-Apis_mellifera_Western_honey_bee.jpg?20150624162048"
+    ],
+    note: "Images: Wikimedia Commons (CC BY / CC0)."
+  }
+];
+
+function showRandom() {
+  const chosen = specimens[Math.floor(Math.random() * specimens.length)];
+  document.getElementById("specimen-title").textContent = chosen.title;
+  document.getElementById("specimen-description").textContent = chosen.description;
+
+  const factsUl = document.getElementById("facts");
+  factsUl.innerHTML = "";
+  chosen.facts.forEach(f => {
+    const li = document.createElement("li");
+    li.textContent = f;
+    factsUl.appendChild(li);
+  });
+
+  const gallery = document.getElementById("gallery");
+  gallery.innerHTML = "";
+  chosen.images.forEach(url => {
+    const img = document.createElement("img");
+    img.src = url;
+    img.alt = chosen.title;
+    gallery.appendChild(img);
+  });
+
+  document.getElementById("image-note").textContent = chosen.note || "";
+}
+
+document.getElementById("shuffle").addEventListener("click", showRandom);
+showRandom(); // initial call
+</script>
+
+</body>
+</html>
