@@ -1,38 +1,51 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Run Zhou</title>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Famous Bugs — Random Specimen</title>
+        <title>Run Zhou</title>
+    <link rel="stylesheet" href="./styles.css"> 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
   :root{
-    --accent:#f59e0b; --bg:#f9fafb; --card:#fff; --text:#111827; --muted:#6b7280;
-    --radius:14px; --maxw:960px;
-    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    --bg:#f9fafb; --card:#fff; --text:#111827; --accent:#f59e0b;
+    --muted:#6b7280; --radius:14px; --maxw:960px;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
   }
-  body{background:var(--bg);margin:0;padding:32px 16px;display:flex;justify-content:center;line-height:1.5;}
-  .wrap{max-width:var(--maxw);width:100%;}
-  h1{margin:0;font-size:1.8rem;}
-  p.lead{color:var(--muted);margin:4px 0 18px;}
-  .card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 18px rgba(0,0,0,0.07);padding:20px;margin-bottom:18px;}
-  .two{display:grid;grid-template-columns:1fr 360px;gap:18px;}
-  @media(max-width:900px){.two{grid-template-columns:1fr;}}
-  .facts ul{margin:8px 0;padding-left:1.15rem;color:var(--muted);}
-  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  .gallery img{width:100%;height:200px;object-fit:cover;border-radius:8px;}
-  .caption{font-size:0.85rem;color:var(--muted);}
-  button{
-    background:var(--accent);color:#fff;font-weight:600;
-    border:none;border-radius:10px;padding:10px 14px;margin-top:12px;cursor:pointer;
+  body{
+    background:var(--bg); margin:0; padding:32px 16px;
+    display:flex; justify-content:center; line-height:1.5;
   }
-  button:hover{opacity:0.9;}
+  .wrap{max-width:var(--maxw); width:100%;}
+  .card{
+    background:var(--card); border-radius:var(--radius);
+    box-shadow:0 6px 18px rgba(0,0,0,0.07);
+    padding:24px; display:grid; grid-template-columns:1fr 320px; gap:24px;
+  }
+  h1,h2{margin-top:0;}
+  p{margin:8px 0;}
+  .muted{color:var(--muted);}
+  img.preview{
+    width:100%; border-radius:var(--radius);
+    object-fit:cover;
+  }
+  .nav{
+    margin-top:16px; display:flex; justify-content:space-between;
+  }
+  .nav button{
+    background:var(--accent); color:#fff; border:none;
+    padding:10px 18px; font-weight:600; cursor:pointer;
+    border-radius:10px;
+  }
+  .nav button:hover{opacity:0.9;}
+  @media(max-width:780px){
+    .card{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
     
 <div class="wrap">
-    <header>
+        <header>
             <nav>
                 <ul>
                     <li><a href="index.html">About</a></li>
@@ -45,165 +58,83 @@
             <h1>Run Zhou</h1>
             <p>Computer Science '26 | Texas A&M University</p>
         </header>
-  
-    <h2 id="specimen-title">Loading...</h2>
-
-  <section class="card two">
+  <div class="card">
     <div>
-      <h3>About</h3>
-      <p id="specimen-description"></p>
-      <div class="card facts">
-        <h4>Quick Facts</h4>
-        <ul id="facts"></ul>
+      <p>Fun fact: I make stickers for the Texas A&M Science Olympiad Society! These are all for sale (while supplies last). Get yours today!</p>
+      <h2 id="title">Loading...</h2>
+      <p id="desc"></p>
+      <ul id="events"></ul>
+      <p class="muted" style="margin-top:12px;">made with love by me. $2 each, available for in-person pickup or shipping. $1 flat-rate shipping fee. contact me on Discord if interested!"</p>
+      <div class="nav">
+        <button id="prev">⬅ Back</button>
+        <button id="next">Next ➡</button>
       </div>
-      <button id="shuffle">🔄 New Bug</button>
     </div>
-    <aside class="card">
-      <h3>Gallery</h3>
-      <div class="gallery" id="gallery"></div>
-      <p class="caption" id="image-note"></p>
-    </aside>
-  </section>
+    <div>
+      <img id="preview" class="preview" src="" alt="Sticker preview">
+    </div>
+  </div>
 </div>
 
 <script>
-const specimens = [
+const pages = [
   {
-    title: "Odonata — Dragonflies & Damselflies",
-    description: "Dragonflies and damselflies are agile fliers with large multifaceted eyes, two pairs of strong transparent wings, and elongated bodies. They are predators both in their aquatic larval stage and as adults.",
-    facts: [
-      "Order: Odonata",
-      "Over 5,000 species worldwide",
-      "Excellent fliers; can hover, glide, and even fly backward",
-      "Larvae are aquatic and predatory"
-    ],
-    images: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Aeshna_juncea_hovering.jpg/500px-Aeshna_juncea_hovering.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Common_blue_damselfly02.jpg/500px-Common_blue_damselfly02.jpg"
-    ],
-    note: "Images: Wikimedia Commons (CC BY / CC0)."
+    title:"Science Olympiad Stickers for 2026!",
+    desc:"Stickers for the 2026 Science Olympiad season!",
+    events:[],
+    img:"https://media.discordapp.net/attachments/1236004658682658866/1413673850100519093/merch26_20250905185504.png?ex=68bcc9de&is=68bb785e&hm=0c390d073f84c12258f4125896b91d7045fdd48568cfb18ba105943dd31af763&=&format=webp&quality=lossless&width=1562&height=1560"
   },
   {
-    title: "Orthoptera — Grasshoppers, Crickets & Katydids",
-    description: "Orthopterans are characterized by their powerful hind legs adapted for jumping, and many species produce sound (stridulation) by rubbing their wings or legs together. They are primarily herbivorous.",
-    facts: [
-      "Order: Orthoptera",
-      "Over 20,000 species worldwide",
-      "Hind legs adapted for jumping",
-      "Many produce sound by stridulation"
-    ],
-    images: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Roesel%27s_bush-cricket_%28Metrioptera_roeselii_diluta%29_male.jpg/500px-Roesel%27s_bush-cricket_%28Metrioptera_roeselii_diluta%29_male.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Garden_locust_%28Acanthacris_ruficornis%29.jpg/500px-Garden_locust_%28Acanthacris_ruficornis%29.jpg"
-    ],
-    note: "Images: Wikimedia Commons (CC BY / CC0)."
+    title:"Life, Personal & Social Science Stickers",
+    events:["Anatomy & Physiology B/C","Designer Genes C","Disease Detectives B/C","Entomology B/C","Heredity B","Water Quality B/C"],
+    img:"https://media.discordapp.net/attachments/1236004658682658866/1413628000054018048/sticker_catalogue_2026_20250905154253.png?ex=68bc9f2b&is=68bb4dab&hm=7dcc7c3ce9640fd590bd4a782ea9779eeb863657f2e7ba0dcb25e833276ac7aa&=&format=webp&quality=lossless&width=1352&height=1352"
   },
   {
-    title: "Hemiptera — True Bugs",
-    description: "True bugs are a diverse group of insects characterized by their piercing-sucking mouthparts. They include species such as stink bugs, assassin bugs, and water striders.",
-    facts: [
-      "Order: Hemiptera",
-      "Over 80,000 species worldwide",
-      "Piercing-sucking mouthparts",
-      "Includes stink bugs, assassin bugs, and water striders"
-    ],
-    images: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Hemiptera_suborders.jpg/600px-Hemiptera_suborders.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Heteroptera_morphology-d.svg/500px-Heteroptera_morphology-d.svg.png"
-    ],
-    note: "Images: Wikimedia Commons (CC BY / CC0)."
+    title:"Earth And Space Science Stickers",
+    events:["Astronomy C","Dynamic Planet B/C","Meterology B",
+    "Remote Sensing B/C","Rocks & Minerals B/C","Solar System B"],
+    img:"https://cdn.discordapp.com/attachments/1236004658682658866/1413628000691425471/sticker_catalogue_2026_20250905154257.png?ex=68bc9f2b&is=68bb4dab&hm=b33bf8d54a60cdc2bad7ccd2921ea48ae70580573eddb41f3213962ca732dc3c&"
   },
   {
-    title: "Coleoptera — Beetles",
-    description: "Beetles are the largest order of insects, characterized by their hardened forewings (elytra) that cover and protect the hind wings and abdomen. They occupy a wide range of habitats and have diverse diets.",
-    facts: [
-      "Order: Coleoptera",
-      "Over 400,000 species worldwide",
-      "Hardened forewings (elytra)",
-      "Diverse diets and habitats"
-    ],
-    images: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Coleoptera_collage.png/500px-Coleoptera_collage.png",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Titanus_giganteus_MHNT_dos.jpg/500px-Titanus_giganteus_MHNT_dos.jpg"
-    ],
-    note: "Images: Wikimedia Commons (CC BY / CC0)."
+    title:"Physical Science & Chemistry Stickers",
+    events:["Chemistry Lab C","Circuit Lab B/C","Crime Busters B","Forensics C","Hovercraft B/C","Machines B/C","Materials Science C","Potions and Poisons B"],
+    img:"https://media.discordapp.net/attachments/1236004658682658866/1413628001249398814/sticker_catalogue_2026_20250905154259.png?ex=68bc9f2b&is=68bb4dab&hm=2ef37613024597b10358565260a1f0ef643ce4aad74a1f70923ebc445d23a2c5&=&format=webp&quality=lossless&width=1352&height=1352"
   },
   {
-    title: "Diptera — Flies, Mosquitoes & Midges",
-    description: "Dipterans are characterized by having a single pair of wings and halteres (modified hindwings) that aid in balance during flight. They include species such as houseflies, mosquitoes, and fruit flies.",
-    facts: [
-      "Order: Diptera",
-      "Over 150,000 species worldwide",
-      "Single pair of wings and halteres",
-      "Includes houseflies, mosquitoes, and fruit flies"
-    ],
-    images: [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Six_Diptera.jpg/960px-Six_Diptera.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Anthomyiidae_%28female%29_%2810144905255%29.jpg/960px-Anthomyiidae_%28female%29_%2810144905255%29.jpg"
-    ],
-    note: "Images: Wikimedia Commons (CC BY / CC0)."
+    title:"Technology & Engineering Stickers",
+    events:["Boomilever B/C","Electric Vehicle C","Helicopter B/C","Mission Possible B","Robot Tour C","Scrambler B"],
+    img:"https://media.discordapp.net/attachments/1236004658682658866/1413628001999913101/sticker_catalogue_2026_20250905154302.png?ex=68bc9f2b&is=68bb4dab&hm=16fe8d96e359f702642cd9352aa967e3b3e24f99dcea2d696d0f33290cd3ee9d&=&format=webp&quality=lossless&width=1352&height=1352"
   },
   {
-    title: "Lepidoptera — Butterflies & Moths",
-    description: "Lepidopterans are known for their scaled wings and undergo complete metamorphosis from larva (caterpillar) to adult. They play important roles in pollination and as indicators of environmental health.",
-    facts: [
-      "Order: Lepidoptera",
-      "Over 180,000 species worldwide",
-      "Scaled wings",
-      "Undergo complete metamorphosis"
-    ],
-    images: [
-      "https://upload.wikimedia.org/wikipedia/commons/3/3d/Fesoj_-_Papilio_machaon_%28by%29.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Attacus_atlas_%2815050883139%29.jpg/500px-Attacus_atlas_%2815050883139%29.jpg"
-    ],
-    note: "Images: Wikimedia Commons (CC BY / CC0)."
+    title:"Inquiry & Nature of Science Stickers",
+    events:["Bungee Drop C","Codebusters B/C","Engineering CAD C","Experimental Design B/C","Metric Mastery B","Write It Do It B"],
+    img:"https://media.discordapp.net/attachments/1236004658682658866/1413628002633388073/sticker_catalogue_2026_20250905154305.png?ex=68bc9f2b&is=68bb4dab&hm=889f83f9f0c65dce8c9064d989c30efe3cb5417334367a8cec5dce5c4d1cef66&=&format=webp&quality=lossless&width=1352&height=1352"
   },
   {
-    title: "Hymenoptera — Ants, Bees & Wasps",
-    description: "Hymenopterans are a diverse group of insects that include ants, bees, and wasps. Many species exhibit complex social behaviors and live in colonies with a division of labor.",
-    facts: [
-      "Order: Hymenoptera",
-      "Over 150,000 species worldwide",
-      "Includes ants, bees, and wasps",
-      "Many exhibit complex social behaviors"
-    ],
-    images: [
-      "https://upload.wikimedia.org/wikipedia/commons/f/f5/Hymenoptera.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Apis_mellifera_Western_honey_bee.jpg/1442px-Apis_mellifera_Western_honey_bee.jpg?20150624162048"
-    ],
-    note: "Images: Wikimedia Commons (CC BY / CC0)."
+    title:"Texas Trial Event Stickers",
+    desc:"Exclusive designs for Texas-only trial events!",
+    events:["GeoWizard B/C","History of Science B/C","Picture This B","Rocket Science B/C","Science Word C","Silicon Showdown C","Sudoku B"],
+    img:"https://media.discordapp.net/attachments/1236004658682658866/1413628003262402792/sticker_catalogue_2026_20250905154309.png?ex=68bc9f2b&is=68bb4dab&hm=56fa6c8ff8a3744bc8edfcf19a89cb23881c9b98a5ea7dd7102f7efa8ea6dc1c&=&format=webp&quality=lossless&width=1352&height=1352"
   }
 ];
 
-function showRandom() {
-  const chosen = specimens[Math.floor(Math.random() * specimens.length)];
-  document.getElementById("specimen-title").textContent = chosen.title;
-  document.getElementById("specimen-description").textContent = chosen.description;
-
-  const factsUl = document.getElementById("facts");
-  factsUl.innerHTML = "";
-  chosen.facts.forEach(f => {
-    const li = document.createElement("li");
-    li.textContent = f;
-    factsUl.appendChild(li);
+let index = 0;
+function render(){
+  const page = pages[index];
+  document.getElementById("title").textContent = page.title;
+  document.getElementById("desc").textContent = page.desc;
+  const ul = document.getElementById("events");
+  ul.innerHTML = "";
+  page.events.forEach(e=>{
+    const li=document.createElement("li");
+    li.textContent = e;
+    ul.appendChild(li);
   });
-
-  const gallery = document.getElementById("gallery");
-  gallery.innerHTML = "";
-  chosen.images.forEach(url => {
-    const img = document.createElement("img");
-    img.src = url;
-    img.alt = chosen.title;
-    gallery.appendChild(img);
-  });
-
-  document.getElementById("image-note").textContent = chosen.note || "";
+  document.getElementById("preview").src = page.img;
 }
-
-document.getElementById("shuffle").addEventListener("click", showRandom);
-showRandom(); // initial call
+document.getElementById("next").onclick = ()=>{index=(index+1)%pages.length; render();};
+document.getElementById("prev").onclick = ()=>{index=(index-1+pages.length)%pages.length; render();};
+render();
 </script>
-
 </body>
 </html>
-
