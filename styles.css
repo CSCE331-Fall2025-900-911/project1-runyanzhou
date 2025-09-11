@@ -8,6 +8,8 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     background-color: #f4ebff;
+    background-image: linear-gradient(rgba(254, 178, 255, 0.5), rgba(210, 174, 255, 0.5)), url(pictures/honmoon.png); 
+    background-size: cover;
     color: black;
 }
 
