@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
   :root{
-    --bg:#f9fafb; --card:#fff; --text:#111827; --accent:#f59e0b;
-    --muted:#6b7280; --radius:14px; --maxw:960px;
+    --bg:#f9fafb; --card:#fff; --text:#111827; --accent:#E3A5FF;
+    --muted:#6b7280; --radius:14px; --maxw:1400px;
     font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
   }
   body{
@@ -20,6 +20,7 @@
     background:var(--card); border-radius:var(--radius);
     box-shadow:0 6px 18px rgba(0,0,0,0.07);
     padding:24px; display:grid; grid-template-columns:1fr 320px; gap:24px;
+    margin-top: 24px
   }
   h1,h2{margin-top:0;}
   p{margin:8px 0;}
@@ -53,9 +54,10 @@
                     <li><a href="qualifications.html">Qualifications</a></li>
                     <li><a href="service.html">Service</a></li>
                     <li><a href="genai.html">AI Generated</a></li>
+                    <li class="settings"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">⚙️</a></li>
                 </ul>
             </nav>
-            <h1>Run Zhou</h1>
+            <h1>RUN ZHOU</h1>
             <p>Computer Science '26 | Texas A&M University</p>
         </header>
   <div class="card">
@@ -74,6 +76,9 @@
       <img id="preview" class="preview" src="" alt="Sticker preview">
     </div>
   </div>
+  <div class="card" style="max-width:100%; margin: 24px auto;">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScFhhesw-xU_Hv_aESMf1Mmi60D4iQlsB8s2XqTuJ7mX1uj-A/viewform?embedded=true" width="640" height="7310" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
 </div>
 
 <script>
@@ -82,39 +87,39 @@ const pages = [
     title:"Science Olympiad Stickers for 2026!",
     desc:"Stickers for the 2026 Science Olympiad season!",
     events:[],
-    img:"2026 stickers.png"
+    img:"pictures/2026 stickers.png"
   },
   {
     title:"Life, Personal & Social Science Stickers",
     events:["Anatomy & Physiology B/C","Designer Genes C","Disease Detectives B/C","Entomology B/C","Heredity B","Water Quality B/C"],
-    img:"bio.png"
+    img:"pictures/bio.png"
   },
   {
     title:"Earth And Space Science Stickers",
     events:["Astronomy C","Dynamic Planet B/C","Meterology B",
     "Remote Sensing B/C","Rocks & Minerals B/C","Solar System B"],
-    img:"es.png"
+    img:"pictures/es.png"
   },
   {
     title:"Physical Science & Chemistry Stickers",
     events:["Chemistry Lab C","Circuit Lab B/C","Crime Busters B","Forensics C","Hovercraft B/C","Machines B/C","Materials Science C","Potions and Poisons B"],
-    img:"chemphys.png"
+    img:"pictures/chemphys.png"
   },
   {
     title:"Technology & Engineering Stickers",
     events:["Boomilever B/C","Electric Vehicle C","Helicopter B/C","Mission Possible B","Robot Tour C","Scrambler B"],
-    img:"builds.png"
+    img:"pictures/builds.png"
   },
   {
     title:"Inquiry & Nature of Science Stickers",
     events:["Bungee Drop C","Codebusters B/C","Engineering CAD C","Experimental Design B/C","Metric Mastery B","Write It Do It B"],
-    img:"inquiry.png"
+    img:"pictures/inquiry.png"
   },
   {
     title:"Texas Trial Event Stickers",
     desc:"Exclusive designs for Texas-only trial events!",
     events:["GeoWizard B/C","History of Science B/C","Picture This B","Rocket Science B/C","Science Word C","Silicon Showdown C","Sudoku B"],
-    img:"tx.png"
+    img:"pictures/tx.png"
   }
 ];
 
@@ -136,5 +141,6 @@ document.getElementById("next").onclick = ()=>{index=(index+1)%pages.length; ren
 document.getElementById("prev").onclick = ()=>{index=(index-1+pages.length)%pages.length; render();};
 render();
 </script>
+
 </body>
 </html>
