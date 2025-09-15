@@ -4,18 +4,18 @@
         <title>Run Zhou</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./styles.css">
+        <link id="mainStyleSheet" rel="stylesheet" href="./styles.css" />
 </head>
     <body>
         <header>
             <nav>
                 <ul>
-                    <li><a href="index.html">About</a></li>
-                    <li><a href="portfolio.html">Technical Portfolio</a></li>
-                    <li><a href="qualifications.html">Qualifications</a></li>
-                    <li><a href="service.html">Service</a></li>
-                    <li><a href="genai.html">AI Generated</a></li>
-                    <li class="settings"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">⚙️</a></li>
+                    <li class="navigation"><a href="index.html">About</a></li>
+                    <li class="navigation"><a href="portfolio.html">Technical Portfolio</a></li>
+                    <li class="navigation"><a href="qualifications.html">Qualifications</a></li>
+                    <li class="navigation"><a href="service.html">Service</a></li>
+                    <li class="navigation"><a href="genai.html">AI Generated</a></li>
+                    <li class="settings"><a href="javascript:void(0)" onclick="toggleStyleSheet()">⚙️ Toggle CSS Style ⚙️</a></li>
                 </ul>
             </nav>
             <h1>RUN ZHOU</h1>
@@ -39,5 +39,6 @@
                 <li><a href="https://github.com/runzhou2004">GitHub</a></li>
             </ul>
         </section>
+        <script src="toggle.js"></script>
     </body>
 </html>
