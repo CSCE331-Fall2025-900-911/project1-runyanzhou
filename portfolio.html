@@ -4,21 +4,23 @@
         <title>Run Zhou</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./styles.css">
+        <link id="mainStyleSheet" rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dancing+Script:wght@400..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
             <nav>
                 <ul>
-                    <li><a href="index.html">About</a></li>
-                    <li><a href="portfolio.html">Technical Portfolio</a></li>
-                    <li><a href="qualifications.html">Qualifications</a></li>
-                    <li><a href="service.html">Service</a></li>
-                    <li><a href="genai.html">AI Generated</a></li>
-                    <li class="settings"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">⚙️</a></li>
+                    <li class="navigation"><a href="index.html">About</a></li>
+                    <li class="navigation"><a href="portfolio.html">Technical Portfolio</a></li>
+                    <li class="navigation"><a href="qualifications.html">Qualifications</a></li>
+                    <li class="navigation"><a href="service.html">Service</a></li>
+                    <li class="navigation"><a href="genai.html">AI Generated</a></li>
+                    <li class="settings"><a href="javascript:void(0)" onclick="toggleStyleSheet()">⚙️ Toggle CSS Style ⚙️</a></li>
                 </ul>
             </nav>
-            <h1>RUN ZHOU</h1>
+            <h1>Run Zhou</h1>
             <p>Computer Science '26 | Texas A&M University</p>
         </header>
         <section id="Portfolio" class="content">
@@ -28,16 +30,22 @@
             <div class="project-grid">
                 <div class="project-item">
                     <img src="pictures/441.png" alt="CSCE441 Assignment 1: Normal lighting on the Stanford Bunny" style="width:100px; height:auto;">
-                    <a href="https://github.com/runzhou2004/CSCE441-OUTPUTS">CSCE 441 (Computer Graphics) Projects</a> Six various assignments showcasing my skills in computer graphics including lighting, shading, animations, and reflections.</li>
+                    <div class="project-item-text">
+                        <a href="https://github.com/runzhou2004/CSCE441-OUTPUTS">CSCE 441 (Computer Graphics) Projects</a> <p>Six various assignments showcasing my skills in computer graphics including lighting, shading, animations, and reflections.</p>
+                    </div>
                 </div>
                 <div class="project-item">
                    <img src="pictures/aggie bus.png" alt="HowdyHack Bus Route" style="width:auto; height:100px;">
-                    <a href="https://github.com/runzhou2004/howdyhack23">HowdyHack Bus Route</a> A project I contributed to during the 2023 fall HowdyHack hackathon. The goal was to make an application for bus routes for Texas A&M, optimizing based on location and bus times using the Google Maps API.</li>
+                    <div class="project-item-text">
+                        <a href="https://github.com/runzhou2004/howdyhack23">HowdyHack Bus Route</a> <p>A project I contributed to during the 2023 fall HowdyHack hackathon. The goal was to make an application for bus routes for Texas A&M, optimizing based on location and bus times using the Google Maps API.</p>
+                    </div>
                 </div>
                 <div class="project-item">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABuElEQVR4Ae3DQ9QVCBgA0Owa27Zt27Marse2N5PtTbZt27Zt2/V1s97rZ+6ec7OcdSrI4RMWsa2t/NeHzO4xdaOL3GGous2x5vSYuN2NhrMs4Yd+YkVXGa72ajNVAdcaDjW7iUww7Gum+tRwtEdzrhsNXzDTDDL80JT8YTjYlOTSlIXh1abkHMPl5jSRS2zvZCfZ3AtNKgzPNzXCNd7nOR7sYSPBTd5qQmsN7zYldxiGm13tLCv5mvMNO3u5VznSHT5mQnUM/zMl7Q2nOttIcJyHu9GkHnG74UUm85TbDQu6S07ftrZrDaubZm0N1/qJh/vRjYaFTeQ1w06mSx/DcLMd7GwctIvJnONGw2fMY34LmCpPGEku811TUtownOVsp5kqtQ3L+aDf+LkPmhZ/O9cwXODzHlUew01eb0bl9Zy985iitobdPC6ymstrvcfNhud4XDRzk3HQlh5zOZxhuMFZLjIMH/KYetVwkVeY3bwWM1xkLo+ZqoZferiFbvZGj5mGhu97uGFu9XaPmV8M63iwqww3eYnHzE1uNqzrVb7hNsNOHnMfGgkOMIfHxc32dI6T/d2zjrmd1CeuHFltx0QAAAAASUVORK5CYII=" 
                         alt="Clements JETS Logo" style="width:100px; height:auto;">
-                    <a href="https://clementsjets.org/home">Clements HS Science Olympiad Website</a> I was the webmaster and outreach coordinator for my high school's Science Olympiad club and helped develop the website for our organization.</li>
+                    <div class="project-item-text">
+                        <a href="https://clementsjets.org/home">Clements HS Science Olympiad Website</a> <p>I was the webmaster and outreach coordinator for my high school's Science Olympiad club and helped develop the website for our organization.</p>
+                </div>
                 </div>
             </div>        
             <br>
@@ -47,13 +55,19 @@
                     <div class="future-project-item">
                         <img src="pictures/tamu scioly.png"
                         alt="TAMU Science Olympiad Logo" style="width:auto; height:100px;">
-                        <a href="https://tamuscioly.com/tournaments.html">Texas A&M Science Olympiad App</a>An app for the Science Olympiad tournaments we host featuring a map of where events are held on campus as well as announcements and a personalized schedule for students based on the events they are competing in and their team.</li>
+                        <div class="future-project-item-text">
+                            <a href="https://tamuscioly.com/tournaments.html">Texas A&M Science Olympiad App</a> <p>An app for the Science Olympiad tournaments we host featuring a map of where events are held on campus as well as announcements and a personalized schedule for students based on the events they are competing in and their team.</p>
+                        </div>
                     </div>
                     <div class="future-project-item">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAMAAABF0y+mAAAAaVBMVEX19fT19fX8/Pz///9/f384ODj29vb4+Pienp5vb2/39/dqamrx8fG4uLjNzc1NTU3W1tZXV1fZ2dkAAABAQEDg4OCKiopbW1uBgYFkZGSUlJQuLi6urq6amprp6elGRkbHx8exsbEfHx8pM+V7AAABFElEQVR4AXzRAYuDMAwF4OXFtV6nVY1upzedt///Iy/pKggHPqBAPhIeejmEUo6To+w5IcuJac7M9Ghg/NdsXFwLJovzPuuOKL/CrbRdX9WRXcJsDk2L2EGtl04aCh9NVqEf+DoGvSk1cyGmGXGP3JUPJuLvyd75B4ZpkaThXnpPYZTKUegneXpVQ8w3ibxAV4YS1m4a1RK6IOvzxTatha3wNjBlxPJgSOutTbQNPZ7RRmOAruY2Vl6QEbOOHEtEanPEC/la4PTSyldtY0ErvH8EbmZoTf5968gDvL5L7BhWqaymdfLbvXjJ8umTFJHGMdAGXYzzUhOOf8WTC/ZSOuvd31AiFH9SIC0R4U2ahBM13uwAAF67DS2JXOZ/AAAAAElFTkSuQmCC" alt="HowdyHack Bus Route" style="width:auto; height:100px;">
-                        <a href="https://sciolyid.org/about/">ID Event Discord Bots</a>Discord bots for the purpose of helping students study for identification-based events in Science Olympiad, such as Entomology or Ichthyology. Existing bots do exist for old events such as Ornithology, and I would love to adapt these bots for other events that are newer.</li>
+                        <div class="future-project-item-text">
+                            <a href="https://sciolyid.org/about/">ID Event Discord Bots</a> <p>Discord bots for the purpose of helping students study for identification-based events in Science Olympiad, such as Entomology or Ichthyology. Existing bots do exist for old events such as Ornithology, and I would love to adapt these bots for other events that are newer.</p>
+                        </div>
+                        </div>
                     </div>
                 </div>   
         </section>
+        <script src="toggle.js"></script>
     </body>
 </html>

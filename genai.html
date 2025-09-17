@@ -1,146 +1,320 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-        <title>Run Zhou</title>
-    <link rel="stylesheet" href="./styles.css"> 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-  :root{
-    --bg:#f9fafb; --card:#fff; --text:#111827; --accent:#E3A5FF;
-    --muted:#6b7280; --radius:14px; --maxw:1400px;
-    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;
-  }
-  body{
-    background:var(--bg); margin:0; padding:32px 16px;
-    display:flex; justify-content:center; line-height:1.5;
-  }
-  .wrap{max-width:var(--maxw); width:100%;}
-  .card{
-    background:var(--card); border-radius:var(--radius);
-    box-shadow:0 6px 18px rgba(0,0,0,0.07);
-    padding:24px; display:grid; grid-template-columns:1fr 320px; gap:24px;
-    margin-top: 24px
-  }
-  h1,h2{margin-top:0;}
-  p{margin:8px 0;}
-  .muted{color:var(--muted);}
-  img.preview{
-    width:100%; border-radius:var(--radius);
-    object-fit:cover;
-  }
-  .nav{
-    margin-top:16px; display:flex; justify-content:space-between;
-  }
-  .nav button{
-    background:var(--accent); color:#fff; border:none;
-    padding:10px 18px; font-weight:600; cursor:pointer;
-    border-radius:10px;
-  }
-  .nav button:hover{opacity:0.9;}
-  @media(max-width:780px){
-    .card{grid-template-columns:1fr;}
-  }
-</style>
+    <title>Run Zhou</title>
+    <link id="mainStyleSheet" rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Dancing+Script:wght@400..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <style>
+        :root {
+            --bg: #f9fafb;
+            --card: #fff;
+            --text: #111827;
+            --accent: #a171df;
+            --muted: #6b7280;
+            --radius: 14px;
+            --maxw: 1400px;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+        }
+
+        body {
+            background: var(--bg);
+            margin: 0;
+            padding: 0px 16px;
+            justify-content: center;
+            line-height: 1.5;
+            color: black;
+        }
+
+        .wrap {
+            max-width: var(--maxw);
+            width: 100%;
+            margin-left:0;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .card.prompt {
+            grid-template-columns: 1fr; /* disables two-column layout */
+            background-color: rgba(189, 142, 243, 0.5); /* light purple background */
+            color: white;
+        }
+
+        .card.form {
+            background-color: rgba(211, 142, 243, 0.5); /* light purple background */
+        }
+
+
+        h1, h2 {margin-top: 0;}
+        p {
+          margin: 8px 0;
+        }
+
+         ul.o {
+          margin-left: 50px;
+        }
+        .muted {color: var(--muted);}
+
+        img.preview {
+            width: 100%;
+            border-radius: var(--radius);
+            object-fit: cover;
+        }
+
+        .nav {
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav button {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        @media(max-width:780px) {
+            .card {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
-<div class="wrap">
+    <!-- Audio -->
+    <audio controls style="display:none;" id="background-audio"></audio>
+    <audio controls style="display:none;" id="urrah"> <source src="audio/urrah_saja_boys.mp3" type="audio/mpeg"> Your browser does not support the audio element. </audio>
+    <div class="wrap">
         <header>
             <nav>
                 <ul>
-                    <li><a href="index.html">About</a></li>
-                    <li><a href="portfolio.html">Technical Portfolio</a></li>
-                    <li><a href="qualifications.html">Qualifications</a></li>
-                    <li><a href="service.html">Service</a></li>
-                    <li><a href="genai.html">AI Generated</a></li>
-                    <li class="settings"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">⚙️</a></li>
+                    <li class="navigation"><a href="index.html">About</a></li>
+                    <li class="navigation"><a href="portfolio.html">Technical Portfolio</a></li>
+                    <li class="navigation"><a href="qualifications.html">Qualifications</a></li>
+                    <li class="navigation"><a href="service.html">Service</a></li>
+                    <li class="navigation"><a href="genai.html">AI Generated</a></li>
+                    <li class="settings"><a href="javascript:void(0)" onclick="toggleStyleSheet()">⚙️ Toggle CSS Style ⚙️</a></li>
                 </ul>
             </nav>
-            <h1>RUN ZHOU</h1>
+            <h1>Run Zhou</h1>
             <p>Computer Science '26 | Texas A&M University</p>
         </header>
-  <div class="card">
-    <div>
-      <p>Fun fact: I make stickers for the Texas A&M Science Olympiad Society! These are all for sale (while supplies last). Get yours today!</p>
-      <h2 id="title">Loading...</h2>
-      <p id="desc"></p>
-      <ul id="events"></ul>
-      <p class="muted" style="margin-top:12px;">made with love by me. $2 each, available for in-person pickup or shipping. $1 flat-rate shipping fee. contact me on Discord if interested!"</p>
-      <div class="nav">
-        <button id="prev">⬅ Back</button>
-        <button id="next">Next ➡</button>
-      </div>
-    </div>
-    <div>
-      <img id="preview" class="preview" src="" alt="Sticker preview">
-    </div>
-  </div>
-  <div class="card" style="max-width:100%; margin: 24px auto;">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScFhhesw-xU_Hv_aESMf1Mmi60D4iQlsB8s2XqTuJ7mX1uj-A/viewform?embedded=true" width="640" height="7310" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-  </div>
-</div>
 
-<script>
-const pages = [
-  {
-    title:"Science Olympiad Stickers for 2026!",
-    desc:"Stickers for the 2026 Science Olympiad season!",
-    events:[],
-    img:"pictures/2026 stickers.png"
-  },
-  {
-    title:"Life, Personal & Social Science Stickers",
-    events:["Anatomy & Physiology B/C","Designer Genes C","Disease Detectives B/C","Entomology B/C","Heredity B","Water Quality B/C"],
-    img:"pictures/bio.png"
-  },
-  {
-    title:"Earth And Space Science Stickers",
-    events:["Astronomy C","Dynamic Planet B/C","Meterology B",
-    "Remote Sensing B/C","Rocks & Minerals B/C","Solar System B"],
-    img:"pictures/es.png"
-  },
-  {
-    title:"Physical Science & Chemistry Stickers",
-    events:["Chemistry Lab C","Circuit Lab B/C","Crime Busters B","Forensics C","Hovercraft B/C","Machines B/C","Materials Science C","Potions and Poisons B"],
-    img:"pictures/chemphys.png"
-  },
-  {
-    title:"Technology & Engineering Stickers",
-    events:["Boomilever B/C","Electric Vehicle C","Helicopter B/C","Mission Possible B","Robot Tour C","Scrambler B"],
-    img:"pictures/builds.png"
-  },
-  {
-    title:"Inquiry & Nature of Science Stickers",
-    events:["Bungee Drop C","Codebusters B/C","Engineering CAD C","Experimental Design B/C","Metric Mastery B","Write It Do It B"],
-    img:"pictures/inquiry.png"
-  },
-  {
-    title:"Texas Trial Event Stickers",
-    desc:"Exclusive designs for Texas-only trial events!",
-    events:["GeoWizard B/C","History of Science B/C","Picture This B","Rocket Science B/C","Science Word C","Silicon Showdown C","Sudoku B"],
-    img:"pictures/tx.png"
-  }
-];
+        
+          <!-- Play/Pause Buttons -->
+            <div style="text-align: center; margin-top: 16px;">
+              <button id="play-button"
+                  style="background-image: linear-gradient(to right, #DAA520, #FFD700, #B8860B); color: #fff; border: none; padding: 10px 18px; font-weight: 600; cursor: pointer; border-radius: 10px; font-size: 16px;">
+                  Play Golden by Huntr/x :)
+              </button>
+              <button id="pause-button"
+                  style="background-image: linear-gradient(to right, #B8860B,#FFD700, #DAA520); color: #fff; border: none; padding: 10px 18px; font-weight: 600; cursor: pointer; border-radius: 10px; font-size: 16px;">
+                  Pause Audio
+              </button>
+            </div>
+            <div class="card prompt">
+              <div>
+              <h2>This page was made entirely with AI (GPT-5).</h2>
+              <h3>The prompt:</h3>
+              <p>I would like to have a page on my website dedicated to advertising my Science Olympiad stickers.</p>
+              <ul>
+                <li>First, could I get a card containing this prompt, with "This page was made entirely made with AI" as the heading?</li>
+                <li>Could you then generate a card with six categories: biology/life sciences, earth and space sciences, chem+physical science, builds/engineering, inquiry events, and Texas trial events?</li>
+                <ul class="o">
+                  <li>I'd like there to be arrows pointing to the next category.</li> 
+                  <li>Landing page would be an introduction to the stickers (Stickers for the 2026 Science Olympiad sticker! Made with love from me. $2 apiece, $1 flat rate shipping. Please contact me on Discord if interested!)</li>
+                  <li>Each category card should have a back arrow to the previous category and a forward arrow to the next, forming a cycle through all six categories.</li>
+                  <li>I would also need an image to the right of the text box that shows all stickers for the specific category. Use a placeholder image for now.</li>
+                </ul>
+                <li>I would also like a card containing a Google Form (embedded) for ordering the stickers at the bottom of the page.</li>
+                <li>Finally, I would like a button at the top of the page that plays a prechosen song and a button that pauses the audio. Use a placeholder audio file that I can swap later.</li>
+                <li>Make sure the page is styled nicely with CSS variables and a modern look, and able to toggle between two styles.</li>
+                <ul class="o">
+                  <li>Specifically the CSS should be based on the rest of the website (using styles.css and styles2.css).</li>
+                  <li>Cards should be shifted to the right to make room for the navbar in the second CSS style.</li>
+                  <li>I would also like to change the colour of the play music buttons AND the song itself.</li>
+                </ul>
+                <p>Thank you so much!</p>
+              </div>
+            </div>
+            <div class="card">
+              <div>
+                  <p>Fun fact: I make stickers for the Texas A&M Science Olympiad Society! These are all for sale (while
+                      supplies last). Get yours today!</p>
+                  <h2 id="title">Loading...</h2>
+                  <p id="desc"></p>
+                  <ul id="events"></ul>
+                  <p class="muted" style="margin-top:12px;">made with love by me. $2 each, available for in-person
+                      pickup or shipping. $1 flat-rate shipping fee. contact me on Discord if interested!"</p>
+                  <div class="nav">
+                      <button id="prev">⬅ Back</button>
+                      <button id="next">Next ➡</button>
+                  </div>
+              </div>
+              <div>
+                  <img id="preview" class="preview" src="" alt="Sticker preview">
+              </div>
+            </div>
+            <div class="card form" style="max-width:100%; margin: 24px auto;">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScFhhesw-xU_Hv_aESMf1Mmi60D4iQlsB8s2XqTuJ7mX1uj-A/viewform?embedded=true"
+              width="100%" height="1280" frameborder="0" marginheight="0" marginwidth="0" display="center">Loading…</iframe>
+            </div>
+    </div>
 
-let index = 0;
-function render(){
-  const page = pages[index];
-  document.getElementById("title").textContent = page.title;
-  document.getElementById("desc").textContent = page.desc;
-  const ul = document.getElementById("events");
-  ul.innerHTML = "";
-  page.events.forEach(e=>{
-    const li=document.createElement("li");
-    li.textContent = e;
-    ul.appendChild(li);
-  });
-  document.getElementById("preview").src = page.img;
+    <script>
+        // Sticker pages
+        const pages = [
+            { title: "Science Olympiad Stickers for 2026!", desc: "Stickers for the 2026 Science Olympiad season!", events: [], img: "pictures/2026 stickers.png" },
+            { title: "Life, Personal & Social Science Stickers", events: ["Anatomy & Physiology B/C", "Designer Genes C", "Disease Detectives B/C", "Entomology B/C", "Heredity B", "Water Quality B/C"], img: "pictures/bio.png" },
+            { title: "Earth And Space Science Stickers", events: ["Astronomy C", "Dynamic Planet B/C", "Meterology B", "Remote Sensing B/C", "Rocks & Minerals B/C", "Solar System B"], img: "pictures/es.png" },
+            { title: "Physical Science & Chemistry Stickers", events: ["Chemistry Lab C", "Circuit Lab B/C", "Crime Busters B", "Forensics C", "Hovercraft B/C", "Machines B/C", "Materials Science C", "Potions and Poisons B"], img: "pictures/chemphys.png" },
+            { title: "Technology & Engineering Stickers", events: ["Boomilever B/C", "Electric Vehicle C", "Helicopter B/C", "Mission Possible B", "Robot Tour C", "Scrambler B"], img: "pictures/builds.png" },
+            { title: "Inquiry & Nature of Science Stickers", events: ["Bungee Drop C", "Codebusters B/C", "Engineering CAD C", "Experimental Design B/C", "Metric Mastery B", "Write It Do It B"], img: "pictures/inquiry.png" },
+            { title: "Texas Trial Event Stickers", desc: "Exclusive designs for Texas-only trial events!", events: ["GeoWizard B/C", "History of Science B/C", "Picture This B", "Rocket Science B/C", "Science Word C", "Silicon Showdown C", "Sudoku B"], img: "pictures/tx.png" }
+        ];
+
+        let index = 0;
+        const titleEl = document.getElementById("title");
+        const descEl = document.getElementById("desc");
+        const eventsEl = document.getElementById("events");
+        const previewEl = document.getElementById("preview");
+
+        function render() {
+            const page = pages[index];
+            titleEl.textContent = page.title;
+            descEl.textContent = page.desc || "";
+            eventsEl.innerHTML = "";
+            page.events.forEach(e => {
+                const li = document.createElement("li");
+                li.textContent = e;
+                eventsEl.appendChild(li);
+            });
+            previewEl.src = page.img;
+        }
+
+        document.getElementById("next").onclick = () => { index = (index + 1) % pages.length; render(); };
+        document.getElementById("prev").onclick = () => { index = (index - 1 + pages.length) % pages.length; render(); };
+        render();
+        document.getElementById("next").addEventListener('click', function() { var urrah = document.getElementById('urrah'); urrah.play(); }); document.getElementById("prev").addEventListener('click', function() { var urrah = document.getElementById('urrah'); urrah.play(); });
+
+        // Audio
+        const audio = document.getElementById('background-audio');
+        const playButton = document.getElementById('play-button');
+        const pauseButton = document.getElementById('pause-button');
+
+        // Initialize audio based on saved style or default
+        let currentStyle = localStorage.getItem("style") || "./styles.css";
+        document.getElementById("mainStyleSheet").href = currentStyle;
+        audio.src = (currentStyle === "./styles2.css") ? "audio/your idol mp3.mp3" : "audio/golden.mp3";
+        audio.load();
+        if (currentStyle === "./styles2.css") {
+          playButton.textContent = "Play Your Idol by Saja Boys :)";
+          playButton.style.backgroundImage = "linear-gradient(to right, #A0A5B8, #A0A5B8, #EC3875, #40222A, #000000)";
+          pauseButton.style.backgroundImage = "linear-gradient(to right, #8CF8E9, #FA9FC8)";
+        } else {
+          playButton.textContent = "Play Golden by Huntr/x :)";
+          playButton.style.backgroundImage = "linear-gradient(to right, #DAA520, #FFD700, #B8860B)";
+          pauseButton.style.backgroundImage = "linear-gradient(to right, #B8860B,#FFD700, #DAA520)";
+        }
+        playButton.addEventListener('click', () => audio.play());
+        pauseButton.addEventListener('click', () => audio.pause());
+
+        // cards
+        const styleEl = document.getElementById("mainStyleSheet");
+        const cards = document.querySelectorAll(".card");
+
+        // background
+        const bg = document.body;
+
+        // Get saved style or default
+        const savedStyle = localStorage.getItem("style") || "./styles.css";
+        styleEl.href = savedStyle;
+
+        // Update everything on page load
+        if (savedStyle.includes("styles2.css")) {
+            // Audio
+            audio.pause();
+            audio.currentTime = 0;
+            audio.src = "audio/your idol mp3.mp3";
+            audio.load();
+
+            // Buttons
+            playButton.textContent = "Play Your Idol by Saja Boys :)";
+            playButton.style.backgroundImage = "linear-gradient(to right, #A0A5B8,#A0A5B8, #EC3875, #40222A, #000000)";
+            pauseButton.style.backgroundImage = "linear-gradient(to right, #8CF8E9, #FA9FC8)";
+
+            // Shift cards
+            cards.forEach(card => card.style.marginLeft = "250px");
+
+            // background
+            bg.style.background = "url('pictures/gwima.png')";
+
+        } else {
+            // Audio
+            audio.pause();
+            audio.currentTime = 0;
+            audio.src = "audio/golden.mp3";
+            audio.load();
+
+            // Buttons
+            playButton.textContent = "Play Golden by Huntr/x :)";
+            playButton.style.backgroundImage = "linear-gradient(to right, #DAA520, #FFD700, #B8860B)";
+            pauseButton.style.backgroundImage = "linear-gradient(to right, #B8860B,#FFD700, #DAA520)";
+
+            // Reset cards
+            cards.forEach(card => card.style.marginLeft = "0px");
+
+            // background
+            bg.style.background = "url('pictures/honmoon.png')"
+        }
+        bg.style.backgroundSize = "cover";
+        bg.style.backgroundAttachment = "fixed";  
+        bg.style.backgroundPosition = "center";
+
+// Then your existing toggle function stays the same
+function toggleStyleSheet() {
+    const newStyle = styleEl.href.includes("styles.css") ? "./styles2.css" : "./styles.css";
+    styleEl.href = newStyle;
+    localStorage.setItem("style", newStyle);
+
+    // Audio
+    audio.pause();
+    audio.currentTime = 0;
+    audio.src = (newStyle === "./styles2.css") ? "audio/your idol mp3.mp3" : "audio/golden.mp3";
+    audio.load();
+
+    // Buttons
+    playButton.textContent = (newStyle === "./styles2.css") ? "Play Your Idol by Saja Boys :)" : "Play Golden by Huntr/x :)";
+    playButton.style.backgroundImage = (newStyle === "./styles2.css") ? "linear-gradient(to right, #A0A5B8, #A0A5B8, #EC3875, #40222A, #000000)" : "linear-gradient(to right, #DAA520, #FFD700, #B8860B)";
+    pauseButton.style.backgroundImage = (newStyle === "./styles2.css") ? "linear-gradient(to right,  #8CF8E9, #FA9FC8)" : "linear-gradient(to right, #B8860B,#FFD700, #DAA520)";
+
+    // Shift cards
+    const margin = (newStyle === "./styles2.css") ? "250px" : "0px";
+    cards.forEach(card => card.style.marginLeft = margin);
+
+    // background
+    bg.style.background = (newStyle === "./styles2.css") ? "url('pictures/gwima.png')": "url('pictures/honmoon.png')";
+    bg.style.backgroundSize = "cover";
+    bg.style.backgroundAttachment = "fixed";  
+    bg.style.backgroundPosition = "center";
 }
-document.getElementById("next").onclick = ()=>{index=(index+1)%pages.length; render();};
-document.getElementById("prev").onclick = ()=>{index=(index-1+pages.length)%pages.length; render();};
-render();
-</script>
 
+    </script>
 </body>
 </html>

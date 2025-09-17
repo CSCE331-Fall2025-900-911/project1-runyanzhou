@@ -8,26 +8,35 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     background-color: #f4ebff;
-    background-image: linear-gradient(rgba(254, 178, 255, 0.5), rgba(210, 174, 255, 0.5)), url(pictures/honmoon.png); 
+    background-image: linear-gradient(#feb2ff80, #d2aeff80), url(pictures/honmoon.png); 
     background-size: cover;
     color: black;
 }
 
 header {
     padding: 2rem;
-    /* background-color: black; */
-    background-image: linear-gradient(to top, #E3A5FF, #203381);
+    height: 300px;
+    background-image: linear-gradient(#203381bf,#e3a6ffbf), url("pictures/huntrix.png"), linear-gradient(to top, #e3a6ff, #203381);
+    background-size: cover, 1000px,cover; 
+    background-repeat: no-repeat;
+    background-position: center, center top, center;
     color: white;
     text-align: center;
 }
 
-
-h1 {
+header h1 {
     font-style: italic;
     font-family: 'Baskerville', serif;
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+    font-size: 5rem;
+    margin-top: 1rem;
     text-transform: uppercase;
+}
+
+header p {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-family: "Barlow Condensed", sans-serif;
+    
 }
 
 header nav ul {
@@ -36,6 +45,7 @@ header nav ul {
     justify-content: center;
     gap: 2rem;
     margin: 1rem;
+    margin-bottom: 2rem;
 }
 
 header nav ul li a {
@@ -48,7 +58,9 @@ header nav ul li a {
 }
 
 .settings a {
+    color: white;
     background-color: #203381;
+    border:2px solid #E3A5FF;
     border-radius: 10px;
     padding: 0.5rem;
 }
@@ -74,8 +86,6 @@ header nav ul li a {
     margin-bottom: 1.5rem;
 }
 
-
-
 .project-grid {
   display: flex;
   flex-wrap: wrap;
@@ -88,7 +98,6 @@ header nav ul li a {
   flex-direction: column;
   flex: 1 1 30%;
   border: 2px solid #E3A5FF;
-  /* background-color: #fbf3ff; */
   background-image: linear-gradient(to top, #eecaff, #fbf3ff);
   padding: 1rem;
   border-radius: 8px;
