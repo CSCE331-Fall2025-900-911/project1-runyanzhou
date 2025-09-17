@@ -8,9 +8,9 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     background-color: #f4ebff;
-    background-image: linear-gradient(#feb2ff80, #d2aeff80), url(pictures/honmoon.png); 
+    background-image: linear-gradient(rgba(51, 28, 120, 0.5), rgba(136, 119, 232, 0.5)), url(pictures/honmoon.png); 
     background-size: cover;
-    color: black;
+    color: white;
 }
 
 header {
@@ -103,6 +103,7 @@ header nav ul li a {
   border-radius: 8px;
   text-align: center;
   align-items: center;
+  color: black;
 }
 
 .project-item img {
@@ -122,6 +123,7 @@ header nav ul li a {
   border-radius: 8px;
   text-align: center;
   align-items: center;
+  color: black;
 }
 
 .future-project-item img {
